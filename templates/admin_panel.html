@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}{% endblock %}
+{% block content %}
+
+
+
+
+
+<div class="card-group">
+    {% for order in order_list %}
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Номер заявки № {{ order.pk }}</h5>
+      <p class="card-text">Выбранная услуга {{ order.type }}</p>
+      <p class="card-text">Дата и время {{ order.date }} - {{ order.time }}</p>
+      <p class="card-text">Статус заказа {{ order.get_uslugi_display }}</p>
+      <p class="card-text">Способ оплаты {{ order.get_pay_payment_display }}</p>
+      <p class="card-text">ФИО заявителя {{ order.user.userprofile.fio }}</p>
+      <p class="card-text">Телефон заявителя {{ order.user.userprofile.phone }}</p>
+
+      {% if order.comment %}<p class="card-text">Причина отмены {{ order.comment }}</p>{% endif %}
+      <p class="card-text"><small class="text-muted">{{ date_at }}</small></p>
+    </div>
+    {% endfor %}
+  </div>
+
+
+
+
+
+
+{% endblock %}

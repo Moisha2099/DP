@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}«Видеохостинг»{% endblock %}
+{% block content %}
+{% if form.errors %}
+    <div class="alert alert-danger" role="alert">
+        Неверный логин или пароль
+    </div>
+{% endif %}
+
+<form method="post" action="{% url 'login'%}">
+    {% csrf_token %}
+  <div class="form-group">
+    <label for="exampleInputEmail1">Логин</label>
+    <input name="username" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1" class="form-label">Пароль</label>
+    <input name="password" type="password" class="form-control" id="exampleInputPassword1">
+  </div>
+    <p>
+    </p>
+  <button type="submit" class="btn btn-primary">Войти</button>
+    <a> </a>
+   <a href="{% url 'register' %}" class="btn btn-primary">Зарегистрироваться</a>
+</form>
+
+    <p>
+    </p>
+
+<p>Пользователь</p>
+<p>Логин user</p>
+<p>Пароль tech12345</p>
+
+<p>Админ(Админка через http://127.0.0.1:8000/admin/) </p>
+<p>Логин admintech</p>
+<p>Пароль tech123</p>
+{% endblock %}
